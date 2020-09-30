@@ -68,23 +68,6 @@ public class BaseClass {
 	System.out.println("I am in BeforeClass:setup");
 	driver=BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl")); 
 	System.out.println("driver :" +driver);
-	
-//	@Parameters({"browser", "testURL"}) 
-//	@BeforeClass			// MVN Build run in Command line when browser and url are parameterized in pom.xml and passed in cmd
-//	public void setup(String Browser, String TestUrl){
-//	driver=BrowserFactory.startApplication(driver, Browser, TestUrl); // This is to run from MVN build in Command line
-//	System.out.println("I am in BeforeClass:setup");
-	
-//	@Parameters({"browser", "version", "platform"}) 
-//	@BeforeClass			// To run in SauceLab: use sauceLabTest.xml and pass this xmlFile value as Mvn cmd argument 
-//	public void setup(String Browser, String Version, String Platform) throws Exception{
-//	driver=BrowserFactory.startApplicationInSauceLab(driver, Browser, Version, Platform, config.getFromConfig("testUrl")); 
-//	System.out.println("I am in BeforeClass:setup");
-	
-//	@BeforeClass
-//	public void setup(){  	// This is for parameterizing via config file only
-//	driver=BrowserFactory.startApplication(driver, config.getFromConfig("Browser"), config.getFromConfig("testUrl"));
-//		System.out.println("I am in BeforeClass:setup");
 	}
 	
 	@AfterTest
