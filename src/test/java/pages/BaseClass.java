@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -20,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import utility.BrowserFactory;
 import utility.ConfigurationDataProvider;
 import utility.ExcelDataProvider;
@@ -44,32 +46,43 @@ public class BaseClass {
 		report.attachReporter(extent);
 	}
 
+	@BeforeTest
+	public void setTest() {
+
+	}
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
+		System.out.println();
 		System.out.println("I am in BeforeClass:setup");
+		System.out.println("driver :" + driver);
 		driver = BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl"));
+//		WebDriverManager.chromedriver().setup(); 				// for latest 
+//		driver = new ChromeDriver();
 		System.out.println("driver :" + driver);
 	}
 
 	@AfterClass
 	public void setAfterTest() {
+		System.out.println("driver :" + driver);
 		BrowserFactory.quitBrowser(driver);
 		System.out.println("I am in AfterClass: Quit");
 	}
 	
 	@AfterMethod
 	public void setAfterMethod(ITestResult result) throws IOException {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			logger.fail("Test FAILED",
-					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			logger.pass("Test PASSED",
-					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			logger.skip("Test SKIPPED",
-					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
-		}
-		report.flush();
+		System.out.println("I am in AfterMethod: ScreenshotCapture Report");
+//		Helper.captureScreenshot(driver);
+//		if (result.getStatus() == ITestResult.FAILURE) {
+//			logger.fail("Test FAILED",
+//					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
+//		} else if (result.getStatus() == ITestResult.SUCCESS) {
+//			logger.pass("Test PASSED",
+//					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
+//		} else if (result.getStatus() == ITestResult.SKIP) {
+//			logger.skip("Test SKIPPED",
+//					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
+//		}
+//		report.flush();
 	}
 }

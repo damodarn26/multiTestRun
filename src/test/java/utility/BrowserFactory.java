@@ -16,24 +16,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
-
-//	If running script locally via pom or testng or as a maven build
-// 	WebDriverManager : https://github.com/bonigarcia/webdrivermanager
-//	This is when you don't want to have driver.exe and manager webdriver automatically
-		
+	
 	public static WebDriver startApplication(WebDriver driver, String browserName, String appURL) {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
-//			System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
-//			WebDriverManager.chromedriver().version("2.36")setup(); 	// for specific version
-//			WebDriverManager.chromedriver().setup(); 				// for latest 
-//			driver = new ChromeDriver();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("start-maximized");
-			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-			options.setExperimentalOption("useAutomationExtension", "false");
 			WebDriverManager.chromedriver().setup(); 				// for latest 
-			driver = new ChromeDriver(options);
+			driver = new ChromeDriver();
 			System.out.println("Browser is set as Chrome");
 			break;
 		case "firefox":
@@ -43,8 +31,7 @@ public class BrowserFactory {
 			break;
 		case "ie":
 			System.out.println("Browser is set as IE");
-			// System.setProperty("webdriver.ie.driver", "./Drivers/IEDriverServer.exe");
-			// driver = new InternetExplorerDriver();
+
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 			break;

@@ -9,11 +9,11 @@ public class LaunchGoogle extends BaseClass {
 	@Test
 	
 	public void googlePage() {
-		
+	
 		driver.get("https://www.google.com");
-		System.out.println("In second class");
-		logger=report.createTest("Submitting without credentials");
-		Assert.assertEquals(12, 12);
+		System.out.println("LaunchGoogle - "+driver.getTitle());
+//		logger=report.createTest("Submitting without credentials");
+//		Assert.assertEquals(12, 12);
 	}
 
 }
