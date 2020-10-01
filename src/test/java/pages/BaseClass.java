@@ -45,14 +45,12 @@ public class BaseClass {
 		report.attachReporter(extent);
 	}
 	
-	@BeforeTest
-	public void setTest() {
-		config = new ConfigurationDataProvider();
-	}
-	
+
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
+		config = new ConfigurationDataProvider();
+
 		System.out.println();
 		System.out.println("I am in BeforeClass:setup");
 		System.out.println("driver :  " + driver );
@@ -74,7 +72,7 @@ public class BaseClass {
 	@AfterMethod
 	public void setAfterMethod(ITestResult result) throws IOException {
 		System.out.println("I am in AfterMethod: ScreenshotCapture Report");
-//		Helper.captureScreenshot(driver);
+		Helper.captureScreenshot(driver);
 //		if (result.getStatus() == ITestResult.FAILURE) {
 //			logger.fail("Test FAILED",
 //					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
@@ -85,6 +83,6 @@ public class BaseClass {
 //			logger.skip("Test SKIPPED",
 //					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 //		}
-//		report.flush();
+		report.flush();
 	}
 }

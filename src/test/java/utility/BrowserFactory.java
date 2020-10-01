@@ -21,7 +21,7 @@ public class BrowserFactory {
 		
 		System.out.println("driver :  " + driver );
 		System.out.println("browser : "+ browserName);
-		System.out.println("testURL " + appURL);
+//		System.out.println("testURL " + appURL);
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup(); 				// for latest 
