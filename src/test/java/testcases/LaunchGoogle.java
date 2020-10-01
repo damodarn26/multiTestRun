@@ -4,11 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BaseClass;
 
-public class EmptyCredentials extends BaseClass {
+public class LaunchGoogle extends BaseClass {
 	
 	@Test
 	
-	public void noSubmitDetails() {
+	public void googlePage() {
 		
 		driver.get("https://www.google.com");
 		System.out.println("In second class");
