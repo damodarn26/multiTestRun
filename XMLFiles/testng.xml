@@ -5,7 +5,7 @@
   		<parameter name="browser" value="chrome" /> 
 		<classes>
   			<class name="testcases.LoginTestCRM" /> 
-  	 		<class name="testcases.EmptyCredentials" />
+  	 		<class name="testcases.LaunchGoogle" />
 	 	</classes>
 	</test>
 </suite> 
