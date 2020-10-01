@@ -18,6 +18,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BrowserFactory {
 	
 	public static WebDriver startApplication(WebDriver driver, String browserName, String appURL) {
+		
+		System.out.println("driver :  " + driver );
+		System.out.println("browser : "+ browserName);
+		System.out.println("testURL " + appURL);
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup(); 				// for latest 
@@ -31,7 +35,6 @@ public class BrowserFactory {
 			break;
 		case "ie":
 			System.out.println("Browser is set as IE");
-
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 			break;

@@ -22,7 +22,7 @@ public class LoginTestCRM extends BaseClass  {
     	
     	driver.get("https://www.linkedin.com");
 //    	logger.pass("Login Successful");
-    	System.out.println("LoginTestCRM - "+driver.getTitle());
+    	System.out.println("LinkedIn - "+driver.getTitle());
     }
     
 
@@ -32,7 +32,7 @@ public class LoginTestCRM extends BaseClass  {
 
 		driver.get("https://www.facebook.com/help");
 //    	logger.fail("Logout FAILED");
-    	System.out.println("LogoutTestCRM  - "+driver.getTitle());
+    	System.out.println("Facebook  - "+driver.getTitle());
     	
     }
 }

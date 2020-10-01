@@ -39,23 +39,25 @@ public class BaseClass {
 	public void setUpSuite() {
 		Reporter.log("TestNG: Setting up reports and test is getting ready", true);
 		excel = new ExcelDataProvider();
-		config = new ConfigurationDataProvider();
 		ExtentHtmlReporter extent = new ExtentHtmlReporter(
 				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
 		report = new ExtentReports();
 		report.attachReporter(extent);
 	}
-
+	
 	@BeforeTest
 	public void setTest() {
-
+		config = new ConfigurationDataProvider();
 	}
+	
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
 		System.out.println();
 		System.out.println("I am in BeforeClass:setup");
-		System.out.println("driver :" + driver);
+		System.out.println("driver :  " + driver );
+		System.out.println("browser : "+ browser);
+		System.out.println("testURL " + config.getFromConfig("testUrl"));
 		driver = BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl"));
 //		WebDriverManager.chromedriver().setup(); 				// for latest 
 //		driver = new ChromeDriver();
