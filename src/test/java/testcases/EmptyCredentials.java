@@ -2,7 +2,6 @@ package testcases;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import pages.BaseClass;
 
 public class EmptyCredentials extends BaseClass {
@@ -11,7 +10,7 @@ public class EmptyCredentials extends BaseClass {
 	
 	public void noSubmitDetails() {
 		
-		driver.get("https://www.facebook.com");
+		driver.get("https://www.google.com");
 		System.out.println("In second class");
 		logger=report.createTest("Submitting without credentials");
 		Assert.assertEquals(12, 12);

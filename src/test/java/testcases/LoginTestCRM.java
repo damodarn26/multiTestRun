@@ -8,8 +8,7 @@ import pages.BaseClass;
  
 public class LoginTestCRM extends BaseClass  {
 	
-	
-	
+
     @Test
     public void loginApp() {
     	// This logger is responsible for all logging info in this class.
@@ -30,6 +29,7 @@ public class LoginTestCRM extends BaseClass  {
     public void logoutApp() {
     	logger=report.createTest("Logout to CRM application");
 
+		driver.get("https://www.facebook.com/help");
     	logger.fail("Logout FAILED");
     	System.out.println("LogoutTestCRM-logoutApp: Failed");
     	
