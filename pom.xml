@@ -73,7 +73,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>XMLFiles/testng.xml</suiteXmlFile> -->
-						<suiteXmlFile>XMLFiles/${xmlFiles}</suiteXmlFile>
+						<suiteXmlFile>XMLFiles/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<systemPropertyVariables>
 						<!-- <testBrowser>${browser}</testBrowser> <urlTotest>${testURL}</urlTotest> -->

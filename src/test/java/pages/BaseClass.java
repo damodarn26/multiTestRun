@@ -52,8 +52,10 @@ public class BaseClass {
 		System.out.println("driver :" + driver);
 	}
 
-	@BeforeClass
-	public void classConfig() {
+	@AfterClass
+	public void setAfterTest() {
+		BrowserFactory.quitBrowser(driver);
+		System.out.println("I am in AfterClass: Quit");
 	}
 	
 	@AfterMethod
@@ -69,11 +71,5 @@ public class BaseClass {
 					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 		}
 		report.flush();
-	}
-
-	@AfterClass
-	public void setAfterTest() {
-		BrowserFactory.quitBrowser(driver);
-		System.out.println("I am in AfterClass: Quit");
 	}
 }
