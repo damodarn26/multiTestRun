@@ -1,13 +1,8 @@
 package pages;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -18,13 +13,10 @@ import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import utility.BrowserFactory;
 import utility.ConfigurationDataProvider;
 import utility.ExcelDataProvider;
-import utility.Helper;
 
 public class BaseClass {
 
@@ -54,11 +46,12 @@ public class BaseClass {
 		Reporter.log("IN BEFORE CLASS", true);
 		config = new ConfigurationDataProvider();
 		excel = new ExcelDataProvider();
-		ExtentHtmlReporter extent = new ExtentHtmlReporter(
+		/* ExtentHtmlReporter extent = new ExtentHtmlReporter(
 				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
 		report = new ExtentReports();
 		report.attachReporter(extent);
-
+		*/	
+		
 		driver = BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl"));
 		System.out.println("driver :" + driver);
 	}
@@ -70,6 +63,7 @@ public class BaseClass {
 
 	}
 	
+	/*
 	@AfterMethod
 	public void setAfterMethod(ITestResult result) throws IOException {
 		Reporter.log("IN AFTER METHOD :", true);
@@ -86,13 +80,13 @@ public class BaseClass {
 					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 		}
 		report.flush();
-	}
+	} */
 	
 	@AfterClass
 	public void setAfterClass() {
 		Reporter.log("IN AFTER CLASS :", true);
 		System.out.println("driver :" + driver);
-//		BrowserFactory.closeBrowser(driver);
+       BrowserFactory.closeBrowser(driver);
 	}
 	
 	@AfterTest
