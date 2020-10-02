@@ -11,7 +11,7 @@ public class LaunchSearchApp extends BaseClass {
 	
 	public void googlePage() {
 		logger=report.createTest("Google");
-    	logger.pass("Login Successful");
+    	logger.info("Login Successful");
     	
     	driver.get("https://www.facebook.com/help");
 		logger.pass("TEST PASSED");

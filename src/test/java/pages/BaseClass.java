@@ -8,9 +8,11 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -35,10 +37,13 @@ public class BaseClass {
 	public void setUpSuite() {
 		Reporter.log("IN BEFORE SUITE", true);
 		excel = new ExcelDataProvider();
-
 	}
 	
-
+	@BeforeTest
+	public void setBeforeTest() {
+			Reporter.log("IN BEFORE TEST", true);
+	}
+	
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
@@ -51,13 +56,7 @@ public class BaseClass {
 		System.out.println("driver :" + driver);
 	}
 
-	@AfterClass
-	public void setAfterTest() {
-		Reporter.log("IN AFTER CLASS :", true);
-		System.out.println("driver :" + driver);
-		BrowserFactory.quitBrowser(driver);
-	}
-	
+
 	@BeforeMethod
 	public void setBeforeMethod(){
 		Reporter.log("IN BEFORE METHOD :", true);
@@ -83,5 +82,17 @@ public class BaseClass {
 					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 		}
 		report.flush();
+	}
+	
+	@AfterClass
+	public void setAfterTest() {
+		Reporter.log("IN AFTER CLASS :", true);
+		System.out.println("driver :" + driver);
+		BrowserFactory.quitBrowser(driver);
+	}
+	
+	@AfterSuite
+	public void setAfterSuite() {
+		Reporter.log("IN AFTER SUITE", true);
 	}
 }
