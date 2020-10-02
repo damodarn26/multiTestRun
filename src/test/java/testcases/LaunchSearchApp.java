@@ -13,7 +13,7 @@ public class LaunchSearchApp extends BaseClass {
 		logger=report.createTest("Google");
     	logger.info("Login Successful");
     	
-    	driver.get("https://www.facebook.com/help");
+    	driver.get("https://www.google.com");
 		logger.pass("TEST PASSED");
 		Reporter.log("Google Title :"+driver.getTitle(), true);
 

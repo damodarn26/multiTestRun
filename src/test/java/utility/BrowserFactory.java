@@ -49,5 +49,9 @@ public class BrowserFactory {
 	public static void quitBrowser(WebDriver driver) {
 		driver.quit();
 	}
+	
+	public static void closeBrowser(WebDriver driver) {
+		driver.close();
+	}
 
 }

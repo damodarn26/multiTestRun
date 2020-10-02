@@ -11,7 +11,7 @@ public class ExcelDataProvider {
 	XSSFWorkbook wb;
 	
 	public ExcelDataProvider() {
-		System.out.println("I am in ExcelData Provider test: to set testData.xls");
+		System.out.println("I am in ConfigExcelDataProvide");
 		// To construct the file path
 		File src=new File("./TestData/testData.xlsx");
 		

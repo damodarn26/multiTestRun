@@ -9,6 +9,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -36,22 +37,28 @@ public class BaseClass {
 	@BeforeSuite
 	public void setUpSuite() {
 		Reporter.log("IN BEFORE SUITE", true);
-		excel = new ExcelDataProvider();
+
 	}
 	
 	@BeforeTest
 	public void setBeforeTest() {
 			Reporter.log("IN BEFORE TEST", true);
+
 	}
 	
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
+		
+		System.out.println();
 		Reporter.log("IN BEFORE CLASS", true);
 		config = new ConfigurationDataProvider();
+		excel = new ExcelDataProvider();
+		ExtentHtmlReporter extent = new ExtentHtmlReporter(
+				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
+		report = new ExtentReports();
+		report.attachReporter(extent);
 
-		System.out.println();
-		Reporter.log("IN BEFORE CLASS :", true);
 		driver = BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl"));
 		System.out.println("driver :" + driver);
 	}
@@ -60,10 +67,7 @@ public class BaseClass {
 	@BeforeMethod
 	public void setBeforeMethod(){
 		Reporter.log("IN BEFORE METHOD :", true);
-		ExtentHtmlReporter extent = new ExtentHtmlReporter(
-				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
-		report = new ExtentReports();
-		report.attachReporter(extent);
+
 	}
 	
 	@AfterMethod
@@ -85,10 +89,15 @@ public class BaseClass {
 	}
 	
 	@AfterClass
-	public void setAfterTest() {
+	public void setAfterClass() {
 		Reporter.log("IN AFTER CLASS :", true);
 		System.out.println("driver :" + driver);
-		BrowserFactory.quitBrowser(driver);
+//		BrowserFactory.closeBrowser(driver);
+	}
+	
+	@AfterTest
+	public void setAfterTest() {
+			Reporter.log("IN AFTER TEST", true);
 	}
 	
 	@AfterSuite
