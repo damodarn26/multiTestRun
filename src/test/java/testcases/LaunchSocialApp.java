@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pageObjectAutomation.LoginPage;
 import pages.BaseClass;	
  
-public class LoginTestCRM extends BaseClass  {
+public class LaunchSocialApp extends BaseClass  {
 	
 
     @Test

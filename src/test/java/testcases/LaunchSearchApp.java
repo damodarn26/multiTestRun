@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BaseClass;
 
-public class LaunchGoogle extends BaseClass {
+public class LaunchSearchApp extends BaseClass {
 	
 	@Test
 	

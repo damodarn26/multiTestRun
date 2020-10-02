@@ -55,9 +55,9 @@ public class BaseClass {
 
 	@AfterClass
 	public void setAfterTest() {
+		Reporter.log("IN AFTERCLASS :", true);
 		System.out.println("driver :" + driver);
 		BrowserFactory.quitBrowser(driver);
-		Reporter.log("IN AFTERCLASS :", true);
 	}
 	
 	@BeforeMethod
