@@ -33,7 +33,7 @@ public class BaseClass {
 
 	@BeforeSuite
 	public void setUpSuite() {
-		Reporter.log("TestNG: Setting up reports and test is getting ready", true);
+		Reporter.log("IN BEFORE SUITE", true);
 		excel = new ExcelDataProvider();
 
 	}
@@ -42,27 +42,25 @@ public class BaseClass {
 	@Parameters("browser")
 	@BeforeClass 
 	public void configTest(String browser) {
+		Reporter.log("IN BEFORE CLASS", true);
 		config = new ConfigurationDataProvider();
 
 		System.out.println();
-		Reporter.log("IN BEFORECLASS :", true);
-		System.out.println("driver :  " + driver );
-		System.out.println("browser : "+ browser);
-		System.out.println("testURL " + config.getFromConfig("testUrl"));
+		Reporter.log("IN BEFORE CLASS :", true);
 		driver = BrowserFactory.startApplication(driver, browser, config.getFromConfig("testUrl"));
 		System.out.println("driver :" + driver);
 	}
 
 	@AfterClass
 	public void setAfterTest() {
-		Reporter.log("IN AFTERCLASS :", true);
+		Reporter.log("IN AFTER CLASS :", true);
 		System.out.println("driver :" + driver);
 		BrowserFactory.quitBrowser(driver);
 	}
 	
 	@BeforeMethod
 	public void setBeforeMethod(){
-		Reporter.log("IN BEFOREMETHOD :", true);
+		Reporter.log("IN BEFORE METHOD :", true);
 		ExtentHtmlReporter extent = new ExtentHtmlReporter(
 				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
 		report = new ExtentReports();
@@ -71,7 +69,7 @@ public class BaseClass {
 	
 	@AfterMethod
 	public void setAfterMethod(ITestResult result) throws IOException {
-		Reporter.log("IN AFTERMETHOD :", true);
+		Reporter.log("IN AFTER METHOD :", true);
 		System.out.println("I am in AfterMethod: ScreenshotCapture Report");
 //		Helper.captureScreenshot(driver);
 		if (result.getStatus() == ITestResult.FAILURE) {
