@@ -12,8 +12,8 @@ public class LaunchGoogle extends BaseClass {
 	
 		driver.get("https://www.google.com");
 		System.out.println("LaunchGoogle - "+driver.getTitle());
-//		logger=report.createTest("Submitting without credentials");
-//		Assert.assertEquals(12, 12);
+		logger=report.createTest("Submitting without credentials");
+		Assert.assertEquals(12, 12);
 	}
 
 }

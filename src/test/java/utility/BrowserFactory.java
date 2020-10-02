@@ -12,16 +12,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Reporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
 	
 	public static WebDriver startApplication(WebDriver driver, String browserName, String appURL) {
-		
-		System.out.println("driver :  " + driver );
-		System.out.println("browser : "+ browserName);
-//		System.out.println("testURL " + appURL);
+
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup(); 				// for latest 
