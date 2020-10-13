@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="none">
+<suite name="Suite" parallel="tests">
  	<test name="GC-Test" thread-count="5">
   		<parameter name="browser" value="chrome"/> 
 		<classes>
-  			<class name="testcases.LaunchSocialApp" /> 
-  	 		<class name="testcases.LaunchSearchApp" />
+  			<class name="testcases.LaunchSocialApp"/>
+  			<class name="testcases.LaunchSearchApp"/>
+	 	</classes>
+	</test>
+	<test name="GC-Test1" thread-count="5">
+  		<parameter name="browser" value="chrome"/> 
+		<classes>
+		    <class name="testcases.LaunchSocialApp"/>
+  	 		<class name="testcases.LaunchSearchApp"/>
 	 	</classes>
 	</test>
 </suite> 

@@ -12,22 +12,24 @@ public class CustomListeners implements ITestListener {
 	static String fileName = System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html";
 
 	private static ExtentReports extent = ExtentManager.createInstance(fileName);
-	public static ExtentTest test;
+	private static ExtentTest test;
+	private static ThreadLocal<ExtentTest> report = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
 		test = extent.createTest(result.getName());
+		report.set(test);
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		test.pass("Test Case : " + result.getName().toUpperCase() + " PASSED");
+		report.get().pass("Test Case : " + result.getName().toUpperCase() + " PASSED");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		test.fail("Test Case : " + result.getName().toUpperCase() + " FAILED");
+		report.get().fail("Test Case : " + result.getName().toUpperCase() + " FAILED");
 	}
 	
 	public void onTestSkipped(ITestResult result) {
-		test.skip("Test Case : " + result.getName().toUpperCase() + " skipped");
+		report.get().skip("Test Case : " + result.getName().toUpperCase() + " skipped");
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
