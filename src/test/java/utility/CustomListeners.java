@@ -1,11 +1,14 @@
 package utility;
 
+import java.io.IOException;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 
 public class CustomListeners implements ITestListener {
 	
@@ -25,7 +28,15 @@ public class CustomListeners implements ITestListener {
 	}
 
 	public void onTestFailure(ITestResult result) {
-		report.get().fail("Test Case : " + result.getName().toUpperCase() + " FAILED");
+		
+		try {
+			report.get().fail("Test Case : " + result.getName().toUpperCase() + " FAILED",
+					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(BrowserFactory.getDriver())).build());
+			System.out.println("Report attached");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void onTestSkipped(ITestResult result) {
